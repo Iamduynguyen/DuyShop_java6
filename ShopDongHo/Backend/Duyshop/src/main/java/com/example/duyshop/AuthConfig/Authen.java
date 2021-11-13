@@ -1,2 +1,6 @@
-package com.example.duyshop.AuthConfig;public class Authen {
+package com.example.duyshop.AuthConfig;
+
+public class Authen {
+
+
 }

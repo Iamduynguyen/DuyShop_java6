@@ -1,4 +1,5 @@
-<div class="left-side-menu" th:fragment="header">
+<html xmlns:th="http://www.thymeleaf.org">
+<div class="left-side-menu" th:fragment="w-header">
     <header class="header">
         <!-- Topbar -->
         <div class="topbar">
@@ -64,9 +65,7 @@
                                                             <li><a th:href="@{/home}">Trang chủ</a></li>
                                                             <li class="icon-active"><a href="#">Sản phẩm</a>
                                                                 <ul class="sub-menu">
-                                                                    <li> <a href="/store?category=1">Đồng hồ cao cấp</a></li>
-                                                                    <li> <a href="/store?category=2">Đồng hồ thời trang</a></li>
-                                                                    <li> <a href="/store?category=3">Đồng hồ thể thao</a></li>
+                                                                    <li th:each="category:${categories}"> <a href="/store?category=1" th:text="${category.name}"></a></li>
                                                                 </ul>
                                                             </li>
                                                             <li><a href="">Diễn đàn</a></li>
@@ -188,3 +187,4 @@
         <!--/ Sidebar Popup -->
     </header>
 </div>
+</html>

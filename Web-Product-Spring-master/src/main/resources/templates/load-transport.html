@@ -1,0 +1,132 @@
+<div class="card" xmlns:th="http://www.thymeleaf.org">
+    <div class="card-body">
+        <div class="d-flex mb-3">
+            <h3 class="flex-grow-1 mt-0 header-title">
+                Danh sách hoá đơn vận chuyển
+            </h3>
+        </div>
+        <div class="table-responsive">
+            <table class="table mb-0 table-centered">
+                <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Người nhập hàng</th>
+                    <th>Số điện thoại</th>
+                    <th>Địa chỉ</th>
+                    <th>Ngày tạo</th>
+                    <th>Trạng thái</th>
+                    <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                <th:block th:each="transport, theCount: ${lstTransport}" th:object="${transport}">
+                    <tr>
+                        <td th:text="${theCount.index + 1}">#</td>
+                        <td th:text="*{fullName}"></td>
+                        <td th:text="*{phoneNumber}"></td>
+                        <td th:text="*{address}"></td>
+                        <td th:text="*{#dates.format(dateCreated, 'dd-MM-yyyy HH:mm:ss')}"></td>
+                        <td th:id="*{id}" th:text="*{statusTransport}"></td>
+                        <td class="text-center">
+                            <a class="btn btn-primary" href="#transport" onclick="updateStatusTransport(this)"
+                               th:data-id="*{id}" th:data-status-transport="*{statusTransport}">
+                                Cập nhật
+                            </a>
+                        </td>
+                    </tr>
+                </th:block>
+                </tbody>
+            </table>
+            <!--end /table-->
+        </div>
+        <!--end /tableresponsive-->
+        <nav th:if="${totalPage > 1}" aria-label="..." class="pagination custom-pagination float-right">
+            <ul class="list-unstyled">
+                <li th:unless="${page == 0}" class="list-inline-item">
+                    <a class="page-link bg-primary text-light" style="cursor: pointer" onclick="clickPage(this)"
+                       th:data-index="${page - 1}"
+                       aria-label="Previous">
+                        <span aria-hidden="true">«</span>
+                        <span class="sr-only">Previous</span>
+                        <div class="ripple-container"></div>
+                    </a>
+                </li>
+                <li th:if="${page - 2 > 0}" class="list-inline-item">
+                    <a class="page-link" style="cursor: pointer" tabindex="-1" onclick="clickPage(this)"
+                       th:data-index="${0}">1</a>
+                </li>
+                <li th:if="${page - 2 > 1}" class="list-inline-item">
+                    <a class="page-link" style="cursor: pointer" tabindex="-1">...</a>
+                </li>
+                <th:block th:each="index, theCount: ${#numbers.sequence(0, totalPage - 1)}">
+                    <th:block th:if="${index < page + 2 && index >= page - 2}">
+                        <li th:if="${index == page}" class="list-inline-item">
+                            <a class="page-link bg-dark text-white" style="cursor: pointer" tabindex="-1"
+                               th:text="${index + 1}"></a>
+                        </li>
+                        <li th:unless="${index == page}" class="list-inline-item">
+                            <a class="page-link" style="cursor: pointer" tabindex="-1" onclick="clickPage(this)"
+                               th:data-index="${index}"
+                               th:text="${index + 1}"></a>
+                        </li>
+                    </th:block>
+                </th:block>
+                <li th:if="${totalPage - 3 > page}" class="list-inline-item">
+                    <a class="page-link" style="cursor: pointer" tabindex="-1">...</a>
+                </li>
+                <li th:if="${totalPage - 2 > page}" class="list-inline-item">
+                    <a class="page-link" style="cursor: pointer" tabindex="-1" onclick="clickPage(this)"
+                       th:data-index="${totalPage - 1}"
+                       th:text="${totalPage}"></a>
+                </li>
+                <li th:unless="${page + 1 == totalPage}" class="list-inline-item">
+                    <a class="page-link bg-primary text-light" onclick="clickPage(this)" style="cursor: pointer"
+                       th:data-index="${page + 1}"
+                       aria-label="Next">
+                        <span aria-hidden="true">»</span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </li>
+            </ul>
+            <!--end pagination-->
+        </nav>
+    </div>
+    <!--end card-body-->
+</div>
+<!--end card-->
+
+<script>
+    function updateStatusTransport(e) {
+        let id = e.dataset.id
+        let textHtml = '<div class="input-group">' +
+            '<input type="email" class="form-control" value="' + e.dataset.statusTransport + '">' +
+            '<span class="input-group-append">' +
+            '<button type="button" class="btn btn-success" data-id="' + id + '" onclick="changeStatusTransport(this)">Thay đổi</button>' +
+            '</span>' +
+            '</div>'
+        $('#' + id).html(textHtml)
+    }
+
+    function changeStatusTransport(e) {
+        console.log(e.dataset.id)
+        let id = e.dataset.id
+        let value = $('#' + id + ' input').val()
+        if (!checkName(value, 'Trạng thái vận chuyển')) return;
+        $.ajax({
+            url: '/api/transports/' + id + '/status-transport',
+            type: 'PUT',
+            data: {"result": value},
+            beforeSend: function (xhr) {
+                xhr.setRequestHeader("Authorization", "Bearer " + getSession('access_token'));
+            },
+            success: function (response) {
+                swal("Thành công", "Thay đổi trạng thái vận chuyểm", "success")
+                $('#' + id).html(value)
+                $("td").find("[data-id='" + id + "']").attr('data-status-transport', value)
+            },
+            error: function (data) {
+                swal("Thất bại", data.responseJSON.message, "warning")
+            }
+        });
+    }
+</script>

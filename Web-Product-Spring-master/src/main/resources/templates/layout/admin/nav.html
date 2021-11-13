@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head>
+</head>
+<body>
+<div class="page-wrapper-inner" th:fragment="nav-admin">
+    <!-- Navbar Custom Menu -->
+    <div class="navbar-custom-menu">
+        <div class="container-fluid">
+            <div id="navigation">
+                <!-- Navigation Menu-->
+                <ul class="navigation-menu list-unstyled">
+                    <li class="has-submenu">
+                        <a href="#" onclick="openHome()">
+                            <i class="mdi mdi-monitor"></i> Dashboard
+                        </a>
+                    </li>
+                    <li  class="has-submenu">
+                        <a href="#">
+                            <i class="mdi mdi-apps"></i>Người dùng
+                        </a>
+                        <ul class="submenu">
+                            <li>
+                                <a href="#staff" onclick="openStaff()">Nhân viên</a>
+                            </li>
+                            <li>
+                                <a href="#visit" onclick="openVisit()">Khách hàng</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="has-submenu">
+                        <a href="#">
+                            <i class="mdi mdi-buffer"></i>Hàng hoá
+                        </a>
+                        <ul class="submenu">
+                            <li>
+                                <a href="#product" onclick="openProduct()">Sản phẩm</a>
+                            </li>
+                            <li>
+                                <a href="#category" onclick="openCategory()">Loại sản phẩm</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="has-submenu">
+                        <a href="#">
+                            <i class="mdi mdi-cards-playing-outline"></i>Hoá đơn
+                        </a>
+                        <ul class="submenu">
+                            <li>
+                                <a href="#invoice" onclick="openInvoice()">Nhập hàng</a>
+                            </li>
+                            <li>
+                                <a href="#bill-order" onclick="openOrder()">Thanh toán</a>
+                            </li>
+                            <li>
+                                <a href="#returns" onclick="openReturns()">Khách trả hàng</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="has-submenu">
+                        <a href="#">
+                            <i class="mdi mdi-arrow-down-drop-circle-outline"></i>Đối tác
+                        </a>
+                        <ul class="submenu">
+                            <li>
+                                <a href="#brand" onclick="openBrand()">Thương hiệu</a>
+                            </li>
+                            <li>
+                                <a href="#transport" onclick="openTransport()">Vận chuyển</a>
+                            </li>
+                            <li>
+                                <a href="#voucher" onclick="openVoucher()">Mã giảm giá</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="has-submenu">
+                        <a href="#history" onclick="openHistory()">
+                            <i class="mdi mdi-chart-bar"></i>Lịch sử
+                        </a>
+                    </li>
+                </ul><!-- End navigation menu -->
+            </div><!-- end navigation -->
+        </div><!-- end container-fluid -->
+    </div><!-- end left-sidenav-->
+    <p sec:authorize="hasRole('ADMIN')">
+        ADMIN
+    </p>
+    <p sec:authorize="hasRole('STAFF')">
+        STAFF
+    </p>
+    <p sec:authorize="hasRole('SUPPER_ADMIN')">
+        SUPPER_ADMIN
+    </p>
+</div>
+</body>
+</html>
+

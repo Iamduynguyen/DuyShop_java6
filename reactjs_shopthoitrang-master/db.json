@@ -1,0 +1,106 @@
+{
+  "categories": [
+    {
+      "id": 1,
+      "name": "Men",
+      "image": "https://topcomshop.com/uploads/images/a-ao2019/1/9187375364-1439912412.jpg"
+    },
+    {
+      "id": 2,
+      "name": "Women",
+      "image": "https://vietstylist.com/wp-content/uploads/2019/02/%C3%81o-thun-nh%E1%BA%A1t-m%C3%A0u.jpg"
+    },
+    {
+      "id": 3,
+      "name": "Children",
+      "image": "https://i.imgur.com/4pbFFey.jpg"
+    },
+    {
+      "id": 4,
+      "name": "Accessories",
+      "image": "https://www.elleman.vn/wp-content/uploads/2019/01/22/phu-kien-thoi-trang-nam-elle-man-feature.jpg"
+    }
+  ],
+  "products": [
+    {
+      "id": "5454015104313445",
+      "name": "Áo phông cổ tròn",
+      "image": "https://www.chapi.vn/img/product/2019/4/1/ao-thun-nam-cotton-co-tron-shn-6-500x500.jpg",
+      "price": 99000,
+      "status": "true",
+      "categoryId": "1"
+    },
+    {
+      "id": "3342115420621463",
+      "name": "Quần bò rách gối",
+      "image": "https://4menshop.com/images/thumbs/2018/06/quan-jean-rach-goi-den-qj1395-7745-slide-products-5b179eea76fb7.jpg",
+      "price": 150000,
+      "status": "true",
+      "categoryId": "2"
+    },
+    {
+      "id": "0421501364533435",
+      "name": "Áo hoodle nam",
+      "categoryId": "2",
+      "image": "https://toplist.vn/images/800px/eddy-store-197287.jpg",
+      "price": 220000,
+      "status": "false"
+    },
+    {
+      "id": "03016135342054222",
+      "name": "Áo sơmi nam",
+      "image": "https://product.hstatic.net/1000375725/product/avatar_1deca0906126427690e39ed43bb9694f_master.jpg",
+      "price": 160000,
+      "status": "true",
+      "categoryId": "1"
+    },
+    {
+      "id": "25054633303202624",
+      "name": "Bộ trẻ em 8-10 tuổi",
+      "categoryId": "3",
+      "image": "https://vn-live-03.slatic.net/p/94feebf166a7782b7ff9d70d8a1279eb.jpg",
+      "price": 110000,
+      "status": "true"
+    },
+    {
+      "id": "3616631143415033",
+      "name": "Dây chuyền vàng",
+      "categoryId": "4",
+      "image": "https://file.hstatic.net/1000112469/file/ptb300_3_14d871eb89e8460b81ab7c83b3ee8d1e_2048x2048.jpg",
+      "price": 500000,
+      "status": "false"
+    }
+  ],
+  "users": [
+    {
+      "email": "trantuanhop9678@gmail.com",
+      "password": "$2a$10$Ukg.RUBfIrHJp9R5hnc/ZOVtYTXozwL4lI1rH9OGee/8gNrYHrVte",
+      "username": "Admin",
+      "id": 1
+    },
+    {
+      "email": "hopttph12855@fpt.edu.vn",
+      "password": "$2a$10$QCom.UPDpeZw8JKzal00.uGtnaMPpXMGm/iYQ0VebiiMabHZ2UI92",
+      "username": "Tuấn Hợp",
+      "id": 2
+    },
+    {
+      "email": "member@gmail.com",
+      "password": "$2a$10$zEAbJ3UTAjk0.AUzpVpENeXQdb6B7Gl04tCMjdE8AYYzBIWU7M94y",
+      "username": "nam",
+      "id": 3
+    },
+    {
+      "email": "minh@gmail.com",
+      "password": "$2a$10$gYlwrjR/dCr1CNi6CgPXsOzrn2YXu1KpNGJOGm.Cv6BscZcWAldv.",
+      "username": "minh",
+      "id": 6
+    },
+    {
+      "email": "thuy@gmail.com",
+      "password": "$2a$10$sgmrwP1.8OLv5OctdV2Rbu/mMAr/Rwx4OzLemOPwZQVBp1f.xuF0m",
+      "username": "thuy",
+      "id": 7
+    }
+  ]
+}
